@@ -4,6 +4,10 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import java.awt.GridLayout;
+import java.awt.Window;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -11,6 +15,11 @@ import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JScrollBar;
 import javax.swing.JTextPane;
+
+import com.sun.java.swing.plaf.windows.resources.windows;
+import com.sun.javafx.font.Disposer;
+
+import paquete.Selection;
 
 public class Resolved_problem {
 
@@ -44,13 +53,14 @@ public class Resolved_problem {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 538, 369);
+		frame.setBounds(100, 100, 711, 535);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JTextArea txt_Statement = new JTextArea();
+		txt_Statement.setEditable(false);
 		txt_Statement.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		txt_Statement.setBounds(20, 82, 208, 200);
+		txt_Statement.setBounds(20, 82, 299, 371);
 		frame.getContentPane().add(txt_Statement);
 		
 		JLabel lblPasiveMode = new JLabel("PASIVE MODE");
@@ -64,20 +74,31 @@ public class Resolved_problem {
 		frame.getContentPane().add(lblNewLabel);
 		
 		JTextArea txt_src_code = new JTextArea();
-		txt_src_code.setBounds(252, 81, 243, 200);
+		txt_src_code.setEditable(false);
+		txt_src_code.setBounds(341, 81, 344, 371);
 		frame.getContentPane().add(txt_src_code);
 		
 		JLabel lblSrcCode = new JLabel("Source code");
 		lblSrcCode.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblSrcCode.setBounds(252, 58, 76, 14);
+		lblSrcCode.setBounds(319, 57, 76, 14);
 		frame.getContentPane().add(lblSrcCode);
 		
 		JButton btnResolve = new JButton("Resolve");
-		btnResolve.setBounds(386, 297, 89, 23);
+		btnResolve.setBounds(567, 463, 89, 23);
 		frame.getContentPane().add(btnResolve);
 		
 		JButton btnCancel = new JButton("Cancel");
-		btnCancel.setBounds(241, 297, 89, 23);
+		btnCancel.setBounds(406, 463, 89, 23);
 		frame.getContentPane().add(btnCancel);
+		btnCancel.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				Selection s = new Selection();
+				s.setVisible(true);
+				frame.dispose();
+				
+			}
+		});
 	}
 }
