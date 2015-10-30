@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import modoPasivo.Pasive_selection;
 import modoPasivo.Resolved_problem;
 
 import javax.swing.GroupLayout;
@@ -51,8 +52,8 @@ public class Selection extends JFrame {
 		btnPasiveMode.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null, "Has tocado PASIVE");
-				Resolved_problem p = new Resolved_problem();
-				p.main(new String[0]);;;
+				Pasive_selection p = new Pasive_selection();
+				p.main(new String[0]);
 				dispose();
 			}
 		});

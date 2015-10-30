@@ -24,12 +24,16 @@ import com.sun.javafx.font.Disposer;
 
 import paquete.Selection;
 import solutions.S1MaxLike;
+import solutions.S2Distrib;
+import solutions.S3Lsq;
 
 public class Resolved_problem {
 
 	private JFrame frame;
 	private static JTextArea txt_src_code;
 	private static JTextArea txt_Statement;
+	private static File fileStatement;
+	private static File fileSrcCode;
 
 	/**
 	 * Launch the application.
@@ -38,7 +42,7 @@ public class Resolved_problem {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Resolved_problem window = new Resolved_problem();
+					Resolved_problem window = new Resolved_problem(args);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +54,24 @@ public class Resolved_problem {
 	/**
 	 * Create the application.
 	 */
-	public Resolved_problem() {
+	public Resolved_problem(String[] option) {
+		switch (option[0]) {
+		case "op1":
+			fileStatement = new File("Ex1");
+			fileSrcCode = new File("src/solutions/S1MaxLike.java");
+		break;
+		case "op2":
+			fileStatement = new File("Ex2");
+			fileSrcCode = new File("src/solutions/S2Distrib.java");
+		break;
+		case "op3":
+			fileStatement = new File("Ex3");
+			fileSrcCode = new File("src/solutions/S3Lsq");
+		break;
+
+		default:
+			break;
+		}
 		initialize();
 	}
 
@@ -67,7 +88,7 @@ public class Resolved_problem {
 		txt_Statement.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
 		JScrollPane scrollStatement = new JScrollPane();
-		scrollStatement.setBounds(50, 95, 549, 150);
+		scrollStatement.setBounds(40, 82, 559, 131);
 		scrollStatement.setVerticalScrollBarPolicy(scrollStatement.VERTICAL_SCROLLBAR_ALWAYS);
 		frame.getContentPane().add(scrollStatement);
 		
@@ -87,7 +108,7 @@ public class Resolved_problem {
 		txt_src_code.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
 		JScrollPane scrollSrcCode = new JScrollPane();
-		scrollSrcCode.setBounds(50, 315, 549, 125);
+		scrollSrcCode.setBounds(40, 274, 559, 171);
 		scrollSrcCode.setVerticalScrollBarPolicy(scrollSrcCode.VERTICAL_SCROLLBAR_ALWAYS);
 		frame.getContentPane().add(scrollSrcCode);
 		
@@ -95,11 +116,11 @@ public class Resolved_problem {
 		
 		JLabel lblSrcCode = new JLabel("Source code");
 		lblSrcCode.setFont(new Font("Tahoma", Font.BOLD, 12));
-		lblSrcCode.setBounds(30, 278, 76, 14);
+		lblSrcCode.setBounds(40, 249, 76, 14);
 		frame.getContentPane().add(lblSrcCode);
 		
 		JButton btnResolve = new JButton("Resolve");
-		btnResolve.setBounds(471, 463, 89, 23);
+		btnResolve.setBounds(445, 463, 89, 23);
 		frame.getContentPane().add(btnResolve);
 		btnResolve.addActionListener(new ActionListener() {
 			
@@ -112,7 +133,7 @@ public class Resolved_problem {
 		});
 		
 		JButton btnCancel = new JButton("Cancel");
-		btnCancel.setBounds(369, 463, 89, 23);
+		btnCancel.setBounds(334, 463, 89, 23);
 		frame.getContentPane().add(btnCancel);
 		btnCancel.addActionListener(new ActionListener() {
 			
@@ -126,14 +147,35 @@ public class Resolved_problem {
 		});
 		
 		JButton btnShowgraphic = new JButton("Show Graphic");
-		btnShowgraphic.setBounds(576, 463, 109, 23);
+		btnShowgraphic.setBounds(544, 463, 127, 23);
 		frame.getContentPane().add(btnShowgraphic);
 		btnShowgraphic.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				S1MaxLike s1 = new S1MaxLike();
-				s1.main(new String [0]);
+				switch (fileStatement.getName()) {
+				case "Ex1":
+					S1MaxLike graphic1 = new S1MaxLike();
+					graphic1.main(new String [0]);
+				break;
+				case "Ex2":
+					S2Distrib graphic2 = new S2Distrib();
+					graphic2.main(new String [0]);
+				break;
+				case "Ex3":
+					S3Lsq graphic3 = new S3Lsq();
+					graphic3.main(new String [0]);
+				break;
+
+				default:
+					break;
+				}
+				
+				
+				
+				
+				
+				
 				
 			}
 		});
@@ -142,10 +184,9 @@ public class Resolved_problem {
 	}
 	
 	private static void completeStatement(){
-		File file = new File("Ex1");
 		ArrayList<String> text = new ArrayList<String>();
 		Read_text_from_file rdFromFile = new Read_text_from_file();
-		text = rdFromFile.saveLines(file);
+		text = rdFromFile.saveLines(fileStatement);
 		
 		// Write first line of the statement
 		txt_Statement.setText(text.get(0));
@@ -157,10 +198,9 @@ public class Resolved_problem {
 	
 	
 	private static void completeSourceCode(){
-		File file = new File("Ex1MaxLike");
 		ArrayList<String> text = new ArrayList<String>();
 		Read_text_from_file rdFromFile = new Read_text_from_file();
-		text = rdFromFile.saveLines(file);
+		text = rdFromFile.saveLines(fileSrcCode);
 		
 		// Write first line of the statement
 		txt_src_code.setText(text.get(0));
