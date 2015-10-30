@@ -8,11 +8,12 @@ public class Db_connector {
 	Connection con = null;
 	
 	public static Connection ConnectDb(){
-		Statement stmt = null;
-	    String sql = null;
+		// Statement stmt = null;
+	    // String sql = null;
 		try{
 			Connection con = DriverManager.getConnection("jdbc:sqlite:users.db");
 			
+			/*
 			// DROP table when starting to avoid "TABLE ALREADY EXISTS"
 			  stmt = con.createStatement();
 			  sql = "DROP TABLE IF EXISTS Users";
@@ -33,6 +34,12 @@ public class Db_connector {
 			  sql = "INSERT INTO Users(userName,pass) VALUES('admin','admin')";
 			  stmt.execute(sql);
 			  stmt.close();
+			  
+			  stmt = con.createStatement();
+			  sql = "INSERT INTO Users(userName,pass) VALUES('admin1','admin1')";
+			  stmt.execute(sql);
+			  stmt.close();
+			  */
 			
 			
 			return con;
@@ -57,6 +64,13 @@ public class Db_connector {
 	      c = DriverManager.getConnection("jdbc:sqlite:users.db");
 		  System.out.println("Opened database successfully");
 		  
+		  
+		  /* DESCOMENTAR LA PRIMERA VEZ QUE SE EJECUTE EL PROGRAMA
+		   * PARA CREAR LAS TABLAS EN users.db
+		   * TAMBIÉN SE PUEDE DESCOMENTAR SI SE QUIERE RESETEAR LA TABLA
+		   * 
+		   * 
+		   * 
 		  // DROP table when starting to avoid "TABLE ALREADY EXISTS"
 		  stmt = c.createStatement();
 		  sql = "DROP TABLE IF EXISTS Users";
@@ -76,6 +90,7 @@ public class Db_connector {
 		  sql = "INSERT INTO Users(userName,pass) VALUES('admin','admin')";
 		  stmt.execute(sql);
 		  stmt.close();
+		  */
 		    
 		    
 	    } catch ( Exception e ) {

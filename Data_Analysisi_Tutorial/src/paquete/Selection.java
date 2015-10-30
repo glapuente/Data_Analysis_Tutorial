@@ -52,6 +52,12 @@ public class Selection extends JFrame {
 		});
 		
 		JButton btnActiveMode = new JButton("ACTIVE MODE");
+		btnActiveMode.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JOptionPane.showMessageDialog(null, "Has tocado ACTIVE");
+
+			}
+		});
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)

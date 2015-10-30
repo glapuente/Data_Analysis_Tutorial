@@ -18,6 +18,10 @@ import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Login extends JFrame {
 	
@@ -50,7 +54,7 @@ public class Login extends JFrame {
 	 */
 	public Login() {
 		// DB connection
-		//db_connect.main(null);
+		Db_connector.main(null);
 		con = Db_connector.ConnectDb();
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,6 +87,7 @@ public class Login extends JFrame {
 						JOptionPane.showMessageDialog(null, "Username and Password is correct");
 						Selection s = new Selection();
 						s.setVisible(true);
+						dispose();
 					}
 					else{
 						JOptionPane.showMessageDialog(null, "Username and Password is incorrect!");	
@@ -94,6 +99,22 @@ public class Login extends JFrame {
 				}
 			}
 		});
+		
+		JLabel lblDataAnalysisTutorial = new JLabel("Data Analysis Tutorial Tool");
+		lblDataAnalysisTutorial.setFont(new Font("Tahoma", Font.PLAIN, 19));
+		lblDataAnalysisTutorial.setForeground(Color.BLUE);
+		
+		JLabel lblCreateNewAccount = new JLabel("Create new account");
+		lblCreateNewAccount.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				//Crear una cuenta nueva
+				New_account new_acc = new New_account();
+				new_acc.setVisible(true);
+				
+			}
+		});
+		lblCreateNewAccount.setForeground(Color.BLUE);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -101,32 +122,44 @@ public class Login extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(102)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-								.addComponent(lblPassword)
-								.addComponent(lblUsername))
-							.addGap(31)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(txt_pass)
-								.addComponent(txt_username)))
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblDataAnalysisTutorial)
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(lblUsername)
+									.addGap(18)
+									.addComponent(txt_username))
+								.addGroup(gl_contentPane.createSequentialGroup()
+									.addComponent(lblPassword)
+									.addGap(18)
+									.addComponent(txt_pass, GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)))
+							.addGap(37))
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(132)
-							.addComponent(btnLogin, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(115, Short.MAX_VALUE))
+							.addGap(141)
+							.addComponent(btnLogin, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)))
+					.addGap(115))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblCreateNewAccount)
+					.addContainerGap(354, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(69)
+					.addContainerGap()
+					.addComponent(lblDataAnalysisTutorial)
+					.addGap(40)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblUsername)
 						.addComponent(txt_username, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblPassword)
 						.addComponent(txt_pass, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(27)
+					.addComponent(btnLogin)
 					.addGap(18)
-					.addComponent(btnLogin, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(55, Short.MAX_VALUE))
+					.addComponent(lblCreateNewAccount)
+					.addContainerGap(19, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
