@@ -1,5 +1,26 @@
-We shall now discuss in detail some specific distributions. This chapter
-could therefore be regarded as a collection of examples. These distributions,
-however, are of great practical importance and are often encountered in many
-applications. Moreover, their study will lead us to a number of important
-theorems.
+This example simulates the experiment of Rutherford and Geiger.
+
+It is simulated as follows. Input quantities are the number N of decays
+observed and the number nint of partial intervals ΔT of the total observation
+time T . For simplicity the length of each partial interval is set equal to one. A total of
+N random events are simulated by simply generating N random numbers uniformly
+distributed between 0 and T . They are entered into a histogram with nint intervals.
+The histogram is first displayed graphically and then analyzed numerically. For each
+number k = 0,1, . . .,Nint the program determines how many intervals N(k) of the
+histogram have k entries. The numbers N(k) themselves are presented in the form of
+another histogram.
+Show that for the process simulated in this example program one obtains in the
+	limit N →∞
+	N(k) = nintWN
+	k (p = 1/nint) .
+If N is increased step by step and at the same time λ = Np = N/nint is kept constant,
+then for large N one has
+WN
+k (p = λ/N)→ λk
+k! e−λ
+and, in the limit N →∞,
+N(k) = nint
+λk
+k! e−λ .
+Check the above statements by running the program with suitable pairs of numbers,
+e.g., (N,nint)=(4,2), (40,20), . . . , (2000,1000), by reading the numbers N(

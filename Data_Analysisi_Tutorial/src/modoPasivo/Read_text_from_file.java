@@ -8,6 +8,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.sun.org.apache.xerces.internal.impl.io.UTF8Reader;
+
 public class Read_text_from_file {
 	
 	private static ArrayList<String> arrWithLines;
@@ -19,7 +21,7 @@ public class Read_text_from_file {
 		String line;
 		try {
 			
-			Scanner sc = new Scanner(file);
+			Scanner sc = new Scanner(file, "UTF8");
 			
 			while (sc.hasNext()){
 				line=sc.nextLine();
