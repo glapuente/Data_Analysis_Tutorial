@@ -75,4 +75,3 @@ public class Selection extends JFrame {
 	}
 
 }
-
