@@ -55,9 +55,7 @@ public class Db_connector {
 	public static void main( String args[] )
 	  {
 	    Connection c = null;
-	    Statement stmt = null;
-	    String sql = null;
-	    
+	    	    
 	    try {
 	      // SQLite database connection
 	      Class.forName("org.sqlite.JDBC");
