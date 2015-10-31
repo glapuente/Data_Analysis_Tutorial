@@ -31,6 +31,7 @@ public class Selection extends JFrame {
 				try {
 					Selection frame = new Selection();
 					frame.setVisible(true);
+					frame.setTitle("Select the mode");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

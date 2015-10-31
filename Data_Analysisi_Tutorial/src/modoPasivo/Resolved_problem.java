@@ -66,7 +66,7 @@ public class Resolved_problem {
 		break;
 		case "op3":
 			fileStatement = new File("Ex3");
-			fileSrcCode = new File("src/solutions/S3Lsq");
+			fileSrcCode = new File("src/solutions/S3Lsq.java");
 		break;
 
 		default:
@@ -156,15 +156,15 @@ public class Resolved_problem {
 				switch (fileStatement.getName()) {
 				case "Ex1":
 					S1MaxLike graphic1 = new S1MaxLike();
-					graphic1.main(new String [0]);
+					// graphic1.main(new String [0]);
 				break;
 				case "Ex2":
 					S2Distrib graphic2 = new S2Distrib();
-					graphic2.main(new String [0]);
+					// graphic2.main(new String [0]);
 				break;
 				case "Ex3":
 					S3Lsq graphic3 = new S3Lsq();
-					graphic3.main(new String [0]);
+					// graphic3.main(new String [0]);
 				break;
 
 				default:

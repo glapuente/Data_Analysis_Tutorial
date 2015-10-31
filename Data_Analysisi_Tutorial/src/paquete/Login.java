@@ -42,6 +42,7 @@ public class Login extends JFrame {
 				try {
 					Login frame = new Login();
 					frame.setVisible(true);
+					frame.setTitle("Data Analysis Login");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

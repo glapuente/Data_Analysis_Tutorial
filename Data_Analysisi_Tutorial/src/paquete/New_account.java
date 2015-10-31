@@ -43,6 +43,7 @@ public class New_account extends JFrame {
 				try {
 					New_account frame = new New_account();
 					frame.setVisible(true);
+					frame.setTitle("Create a new account");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
