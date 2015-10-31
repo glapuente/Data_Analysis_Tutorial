@@ -26,6 +26,7 @@ import paquete.Selection;
 import solutions.S1MaxLike;
 import solutions.S2Distrib;
 import solutions.S3Lsq;
+import javax.swing.SwingConstants;
 
 public class Resolved_problem {
 
@@ -157,28 +158,28 @@ public class Resolved_problem {
 				case "Ex1":
 					S1MaxLike graphic1 = new S1MaxLike();
 					// graphic1.main(new String [0]);
-				break;
+					break;
 				case "Ex2":
 					S2Distrib graphic2 = new S2Distrib();
 					// graphic2.main(new String [0]);
-				break;
+					break;
 				case "Ex3":
 					S3Lsq graphic3 = new S3Lsq();
 					// graphic3.main(new String [0]);
-				break;
-
+					break;
+					
 				default:
 					break;
-				}
-				
-				
-				
-				
-				
-				
-				
+				}	
 			}
 		});
+		
+		JLabel lblProblem = new JLabel("");
+		lblProblem.setHorizontalAlignment(SwingConstants.CENTER);
+		lblProblem.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblProblem.setBounds(257, 43, 127, 14);
+		lblProblem.setText(fileSrcCode.getName().substring(0, fileSrcCode.getName().length()-5));
+		frame.getContentPane().add(lblProblem);
 		
 
 	}
