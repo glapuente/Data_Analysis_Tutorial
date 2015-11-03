@@ -23,6 +23,7 @@ public class Pasive_selection {
 				try {
 					Pasive_selection window = new Pasive_selection();
 					window.frame.setVisible(true);
+					//Tittle
 					window.frame.setTitle("Choose the problem to test");
 				} catch (Exception e) {
 					e.printStackTrace();
